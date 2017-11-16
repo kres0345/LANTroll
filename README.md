@@ -1,6 +1,10 @@
 # LANTroll
 Troll people with this tool
 
+### How to use:
+- Go into `minion.py` and change the current ip with your private/local IP address.
+- Start `buildexe.bat`(note. To make `buildexe.bat` work you need [`Pyinstaller`](www.pyinstaller.org) installed)
+
 #### Current commands:
 - shutdown: initates a shutdown command.
 - test: starts the calculator.
