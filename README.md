@@ -15,4 +15,5 @@ Troll people with this tool
 - togglecaps(currently not working.): continuously toggle capslock.
 
 How the networking works:
+
 ![](https://cdn.rawgit.com/kres0345/LANTroll/261cace7/LANTrollNetworkChart.png)
