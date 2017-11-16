@@ -153,6 +153,16 @@ loop
             pass
         print("Done")
 
+    elif "install" in str(command1[0]):
+        path = os.environ["HOMEPATH"]
+        finalpatht = "C:"+path+"\Desktop\\tcaps.vbs"
+        url = 'http://www.blog.pythonlibrary.org/wp-content/uploads/2012/06/wxDbViewer.zip'
+        #C:\Users\kress\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+        print("Installing")
+        #Insert requests install command here
+
+
+
 
     time.sleep(10)
     s.close()
