@@ -14,6 +14,6 @@ Troll people with this tool
 - opencd: opens the cd drive continuously.
 - togglecaps(currently not working.): continuously toggle capslock.
 
-How the networking works:
+#### How the networking works:
 
 ![](https://cdn.rawgit.com/kres0345/LANTroll/261cace7/LANTrollNetworkChart.png)
