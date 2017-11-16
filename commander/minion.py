@@ -1,6 +1,6 @@
 #!/usr/bin/python
-import socket, time, subprocess, sys, os
-from pathlib import Path
+import socket, time, subprocess, sys, os, urllib
+#from pathlib import Path
 while True:
     s = socket.socket()
     port = 12345
