@@ -1,7 +1,7 @@
 # LANTroll
 Troll people with this tool
 
-Current commands:
+#### Current commands:
 - shutdown: initates a shutdown command.
 - test: starts the calculator.
 - cancel: stop any shutdown commands.
