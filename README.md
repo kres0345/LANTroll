@@ -17,6 +17,9 @@ Troll people with this tool
 - backspaces:(s) continuously use backspace, disable with 'cancel' command.
 - ghostkeys [input text]:(s) Make custom keystroke on Minion.
 - cleanup: Removes .vbs files your desktop.
+- install: Downloads the latest .exe version and places it in the windows 'start folder'.
+- uninstall: Removes the .exe file in start folder.
+- restart: Only to be used after install command. Only starts the process in 'start folder'.
 
 #### How the networking works:
 

