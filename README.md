@@ -11,4 +11,4 @@ Current commands:
 - togglecaps(currently not working.): continuously toggle capslock.
 
 How the networking works:
-![Networking Chart]()
+![](https://cdn.rawgit.com/kres0345/LANTroll/17c3c1cd/lantrollflowchart.png)
