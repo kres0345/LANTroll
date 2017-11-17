@@ -4,3 +4,19 @@ commander/webserver/webserver.py
 commander/webserver/index.html
 commander/webserver/cgi-bin/script.py
 commander/webserver/cgi-bin/script.cgi
+commander/antivirus report/infected.zip
+commander/antivirus report/infected/compilelog.txt
+commander/antivirus report/infected/compiling files/build/socket/out00-Analysis.toc
+commander/antivirus report/infected/compiling files/build/socket/out00-EXE.toc
+commander/antivirus report/infected/compiling files/build/socket/out00-PKG.pkg
+commander/antivirus report/infected/compiling files/build/socket/out00-PKG.toc
+commander/antivirus report/infected/compiling files/build/socket/out00-PYZ.pyz
+commander/antivirus report/infected/compiling files/build/socket/out00-PYZ.toc
+commander/antivirus report/infected/compiling files/build/socket/socket.exe.manifest
+commander/antivirus report/infected/compiling files/build/socket/warnsocket.txt
+commander/antivirus report/infected/compiling files/build/socket/xref-socket.html
+commander/antivirus report/infected/compiling files/dist/socket.exe
+commander/antivirus report/infected/compiling files/socket.spec
+commander/antivirus report/infected/info.txt
+commander/antivirus report/infected/socket.exe
+commander/antivirus report/infected/socket.py
