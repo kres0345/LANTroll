@@ -1,6 +1,6 @@
 @echo off
 del minion.exe
-pyinstaller --noconsole --onefile minion.py
+pyinstaller -i icon.ico --noconsole --onefile minion.py
 move %~dp0\dist\minion.exe %cd%
 del minion.spec /q 
 del dist /q

