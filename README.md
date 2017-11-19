@@ -5,7 +5,7 @@ Troll people with this tool
 - Go into `minion.py` and change the current ip with your private/local IP address.
 - Start `buildexe.bat`(note. To make `buildexe.bat` work you need [`Pyinstaller`](www.pyinstaller.org) installed)
 
-#### Current commands:
+#### Command list:
 (s) = Spoils your non-exsistance. Since it creates a file on the desktop.
 - shutdown: initates a shutdown command.
 - test: starts the calculator.
@@ -19,7 +19,9 @@ Troll people with this tool
 - cleanup: Removes .vbs files your desktop.
 - install: Downloads the latest .exe version and places it in the windows 'start folder'.
 - uninstall: Removes the .exe file in start folder.
-- restart: Only to be used after install command. Only starts the process in 'start folder'.
+- restart: Full of bugs currently don't touch for your own good. Original description: Only to be used after install command. Only starts the process in 'start folder'.
+- instantshutdown: Note: this is not nice.
+- tts: Text 2 Speech, only english.
 
 #### How the networking works:
 
