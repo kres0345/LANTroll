@@ -24,6 +24,7 @@ print('''(s) = Spoil your non-excistance. Since it creates a file on the desktop
 - uninstall: Removes the .exe file in start folder.
 - restart: Full of bugs currently don't touch for your own good. Original description: Only to be used after install command. Only starts the process in 'start folder'.
 - instantshutdown: Note: this is not nice.
+- tts: Text 2 Speech, only english.
 ''')
 command = raw_input("Enter your command, commander: ")
 s = socket.socket()

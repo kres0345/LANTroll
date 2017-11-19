@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import socket, time, subprocess, sys, os, urllib
+import socket, time, subprocess, sys, os, urllib, pyttsx
 #from pathlib import Path
 while True:
     s = socket.socket()
@@ -186,6 +186,14 @@ loop
             #time.sleep(10)
     elif "instantshutdown" in str(command1[0]):
         subprocess.call(["shutdown", "-s", "-t", "0"])
+    
+    elif "tts" in str(command1[0]):
+        print("Text 2 Speech")
+        tts = command.split(" ",1)
+        print(tts)
+        engine = pyttsx.init()
+        engine.say(tts[1])
+        engine.runAndWait()
         
     time.sleep(10)
     s.close()
