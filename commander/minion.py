@@ -6,7 +6,7 @@ while True:
     s = socket.socket()
     port = 12345
     try:
-        s.connect(('10.64.41.234', port))
+        s.connect(('10.64.41.123', port))
         command = s.recv(1024)
         print("Command recieved: "+command)
     except socket.error as err:
