@@ -4,6 +4,7 @@ Troll people with this tool
 ### How to use:
 - Go into `minion.py` and change the current ip with your private/local IP address.
 - Start `buildexe.bat`(note. To make `buildexe.bat` work you need [`Pyinstaller`](www.pyinstaller.org) installed)
+- Change the ip in the minion before building.
 
 #### Command list:
 (s) = Spoils your non-exsistance. Since it creates a file on the desktop.
